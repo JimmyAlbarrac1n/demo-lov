@@ -5,7 +5,8 @@ import AboutSection from "@/components/AboutSection";
 import PacksSection from "@/components/PacksSection";
 import EventsSection from "@/components/EventsSection";
 import PromotersSection from "@/components/PromotersSection";
-import ContactSection from "@/components/ContactSection";
+import ScheduleSection from "@/components/ScheduleSection";
+import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -26,8 +27,11 @@ const Index = () => {
         <EventsSection />
       </div>
       <PromotersSection />
+      <div id="horarios">
+        <ScheduleSection />
+      </div>
       <div id="contacto">
-        <ContactSection />
+        <LocationSection />
       </div>
       <Footer />
     </div>
