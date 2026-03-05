@@ -1,33 +1,39 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/Flow_delpmaspu_.mp4";
 import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasPlayed, setHasPlayed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasPlayed && window.scrollY > 0) {
+        setHasPlayed(true);
+        if (videoRef.current) {
+          // Reproducir el video y manejar cualquier error de políticas del navegador automáticamente
+          videoRef.current.play().catch(() => { });
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasPlayed]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Planeta Lov nightclub" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight mb-4">
-            <span className="text-gradient-gold">Planeta</span>{" "}
-            <span className="text-foreground">Lov</span>
-          </h1>
-          <div className="w-24 h-[2px] bg-gradient-gold mx-auto mb-6" />
-          <p className="text-lg md:text-xl text-muted-foreground font-body font-light tracking-widest uppercase">
-            La experiencia que estabas buscando
-          </p>
-        </motion.div>
+        <video
+          ref={videoRef}
+          src={heroVideo}
+          muted
+          playsInline
+          // loop no está presente, por lo tanto el video se detendrá al finalizar
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Scroll indicator */}
