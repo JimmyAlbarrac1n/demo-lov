@@ -1,44 +1,28 @@
-import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import heroVideo from "@/assets/Flow_delpmaspu_.mp4";
 import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasPlayed, setHasPlayed] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!hasPlayed && window.scrollY > 0) {
-        setHasPlayed(true);
-        if (videoRef.current) {
-          // Reproducir el video y manejar cualquier error de políticas del navegador automáticamente
-          videoRef.current.play().catch(() => { });
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasPlayed]);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    // min-h-svh: usa el "small viewport height" para que en móvil
+    // el video llene la pantalla correctamente (evita el bug del 100vh
+    // donde la barra del navegador come parte de la pantalla).
+    <section className="relative w-full aspect-video sm:aspect-auto sm:min-h-svh flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
-          ref={videoRef}
           src={heroVideo}
-          muted
-          playsInline
-          // loop no está presente, por lo tanto el video se detendrá al finalizar
+          autoPlay   // arranca automáticamente al cargar la página
+          muted      // necesario para que autoPlay funcione en todos los navegadores
+          playsInline // necesario para iOS (evita el player a pantalla completa en iPhone)
+          // sin 'loop': el video se pausa en el último fotograma
           className="w-full h-full object-cover"
         />
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
