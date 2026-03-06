@@ -46,7 +46,7 @@ const LocationSection = () => {
           >
             <MapPin className="w-10 h-10 text-primary" />
             <h3 className="text-xl font-display font-bold text-foreground">Encuéntranos</h3>
-            <p className="text-sm text-muted-foreground">Santo Domingo, República Dominicana</p>
+            <p className="text-sm text-muted-foreground">Ambato, Ecuador</p>
             <a
               href="https://maps.app.goo.gl/RwYBta2pARGXBUqf8"
               target="_blank"
