@@ -26,7 +26,7 @@ const LocationSection = () => {
             viewport={{ once: true }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.0!2d-69.93!3d18.47!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI4JzEyLjAiTiA2OcKwNTUnNDguMCJX!5e0!3m2!1ses!2sdo!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.59631097595!2d-78.6699295891602!3d-1.2788379999999948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d3830012771a61%3A0x341d09ad40ec77db!2sLOV%20Music%20Club!5e0!3m2!1ses-419!2sec!4v1772773128618!5m2!1ses-419!2sec"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -48,7 +48,7 @@ const LocationSection = () => {
             <h3 className="text-xl font-display font-bold text-foreground">Encuéntranos</h3>
             <p className="text-sm text-muted-foreground">Ambato, Ecuador</p>
             <a
-              href="https://maps.app.goo.gl/RwYBta2pARGXBUqf8"
+              href="https://maps.google.com/?q=LOV+Music+Club,+Ambato,+Ecuador"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
